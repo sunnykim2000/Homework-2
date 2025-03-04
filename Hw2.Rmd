@@ -1,0 +1,45 @@
+---
+title: "Homework 2"
+author: "Sunny Kim"
+date: "2025-02-24"
+output: html_document
+---
+
+#mean number of calls
+l <- 15 
+
+## 1. Probability that she will hear more than 8 calls during any session
+x <- 8
+Pr_more_than_8 = 1-ppois(q=x, lambda=l)
+#Print result
+Pr_more_than_8
+
+## 2. Probability that she will hear no calls
+x <- 0
+Pr_no_calls = dpois(x=x, lambda=l)
+#Print result
+Pr_no_calls
+
+## 3. Probability that she will hear exactly 3 calls
+x <- 3
+Pr_three_calls = dpois(x=x, lambda=l)
+#Print result
+Pr_three_calls
+
+## 4. Plot relevant Poisson mass function over values in range 0 ≤ x ≤ 30
+#Compute Poisson PMF
+x<-0:30
+ppmf <- dpois(x=x, lambda = l)
+#plot PMF
+barplot (ppmf, names.arg = x, space = 0, xlab = "number of calls", ylab = "Probability", main = "Poisson Mass Function", col = "green")
+
+## 5. Simulate 104 results from this distrubiution
+x <- 104
+Pr_104_calls <- rpois(x, lambda = l)
+#Print result
+Pr_104_calls
+
+## 6. Plot simulated results using hist() and xlim(), how does your histogram compare to the shape of the probability mass function you plotted above?
+#Make Histogram
+hist(Pr_104_calls,xlim = c(0,30), main = "Simulated 104 Results", xlab = "number of calls", ylab = "frequency", col = "blue")
+#The histogram generally shows a similar curve to the mass function plotted above, however the pmf shows a smooth bell curve where as the histogram changes everytime due to the randomly generated values.
